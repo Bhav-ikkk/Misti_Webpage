@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trendy Threads - Your Fashion Destination</title>
+    <meta name="description" content="Hamsa Clothing - Premium clothing designed to elevate your everyday style with comfort and confidence.">
+    <meta name="keywords" content="Hamsa Clothing, fashion, premium clothing, everyday style, timeless fashion">
+    <meta name="author" content="Hamsa Clothing Team">
+    <title>Hamsa Clothing - Elevate Your Everyday Style</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -33,12 +36,25 @@
                             700: '#7e22ce',
                             800: '#6b21a8',
                             900: '#581c87',
+                        },
+                        accent: {
+                            100: '#fefcbf',
+                            200: '#fefcbf',
+                            300: '#fefcbf',
+                            400: '#fefcbf',
+                            500: '#fefcbf',
+                            600: '#fefcbf',
+                            700: '#fefcbf',
+                            800: '#fefcbf',
+                            900: '#fefcbf',
                         }
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.5s ease-in-out',
                         'slide-up': 'slideUp 0.5s ease-in-out',
                         'slide-down': 'slideDown 0.3s ease-in-out',
+                        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce': 'bounce 1s infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -52,13 +68,34 @@
                         slideDown: {
                             '0%': { transform: 'translateY(-20px)', opacity: '0' },
                             '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.5' },
+                        },
+                        bounce: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         }
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'custom': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+                        'custom-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+                    },
+                    spacing: {
+                        '128': '32rem',
+                        '144': '36rem',
                     }
                 }
             }
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         .scroll-smooth {
             scroll-behavior: smooth;
@@ -70,6 +107,7 @@
         
         .product-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
         }
         
         .product-card .quick-view {
@@ -81,6 +119,33 @@
             opacity: 1;
         }
 
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
         @media (max-width: 768px) {
             .mobile-menu {
                 display: none;
@@ -89,35 +154,97 @@
             .mobile-menu.active {
                 display: flex;
             }
+
+            .hero-image {
+                max-height: 300px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hero-image {
+                max-height: 500px;
+            }
+        }
+
+        .custom-shape-divider-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .custom-shape-divider-bottom svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 120px;
+        }
+
+        .custom-shape-divider-bottom .shape-fill {
+            fill: #ffffff;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #0ea5e9, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.1);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50 scroll-smooth">
+<body class="font-poppins bg-gray-50 scroll-smooth">
     <!-- Header Section -->
-    <header class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
+    <header class="navbar bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <div class="text-2xl font-bold text-primary-600">Trendy Threads</div>
+                    <div class="text-2xl font-bold text-primary-600 font-playfair">Hamsa Clothing</div>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-primary-600 transition-colors">Home</a>
-                    <a href="#products" class="text-gray-600 hover:text-primary-600 transition-colors">Products</a>
-                    <a href="#about" class="text-gray-600 hover:text-primary-600 transition-colors">About</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-primary-600 transition-colors">Testimonials</a>
-                    <a href="#contact" class="text-gray-600 hover:text-primary-600 transition-colors">Contact</a>
+                    <a href="#home" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">Home</a>
+                    <a href="#products" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">Collections</a>
+                    <a href="#about" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">About</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">Testimonials</a>
+                    <a href="#contact" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">Contact</a>
                 </div>
                 
                 <!-- Shopping Cart & User Account -->
                 <div class="hidden md:flex items-center space-x-4">
                     <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-user text-lg"></i>
                     </a>
                     <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors relative">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="absolute -top-2 -right-2 bg-primary-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-primary-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
                     </a>
                 </div>
                 
@@ -131,17 +258,17 @@
             
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="mobile-menu flex-col mt-4 pb-2 space-y-3">
-                <a href="#home" class="text-gray-600 hover:text-primary-600 py-2 transition-colors">Home</a>
-                <a href="#products" class="text-gray-600 hover:text-primary-600 py-2 transition-colors">Products</a>
-                <a href="#about" class="text-gray-600 hover:text-primary-600 py-2 transition-colors">About</a>
-                <a href="#testimonials" class="text-gray-600 hover:text-primary-600 py-2 transition-colors">Testimonials</a>
-                <a href="#contact" class="text-gray-600 hover:text-primary-600 py-2 transition-colors">Contact</a>
+                <a href="#home" class="text-gray-600 hover:text-primary-600 py-2 transition-colors font-medium">Home</a>
+                <a href="#products" class="text-gray-600 hover:text-primary-600 py-2 transition-colors font-medium">Collections</a>
+                <a href="#about" class="text-gray-600 hover:text-primary-600 py-2 transition-colors font-medium">About</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-primary-600 py-2 transition-colors font-medium">Testimonials</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary-600 py-2 transition-colors font-medium">Contact</a>
                 <div class="flex space-x-4 pt-2">
-                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors">
-                        <i class="fas fa-user"></i> Account
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">
+                        <i class="fas fa-user mr-2"></i> Account
                     </a>
-                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors">
-                        <i class="fas fa-shopping-bag"></i> Cart (3)
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">
+                        <i class="fas fa-shopping-bag mr-2"></i> Cart (0)
                     </a>
                 </div>
             </div>
@@ -157,84 +284,89 @@
         <div class="container mx-auto px-6 py-24 md:py-32 relative z-10">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 text-center md:text-left text-white animate-fade-in">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">Discover Your Style with Trendy Threads</h1>
-                    <p class="text-lg md:text-xl mb-8 opacity-90">Explore our curated collection of high-quality, fashionable clothing designed for the modern you.</p>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight font-playfair">Welcome to Hamsa Clothing</h1>
+                    <p class="text-lg md:text-xl mb-4 opacity-90">Hamsa Clothing is where fashion meets. We create premium clothing designed to elevate your everyday style.</p>
+                    <p class="text-lg md:text-xl mb-8 opacity-90">From timeless staples to bold statement pieces, every item in our collection is crafted with care, comfort, and confidence in mind.</p>
+                    <p class="text-lg md:text-xl mb-8 opacity-90 font-medium">Welcome to your new wardrobe essentials—welcome to Hamsa Clothing.</p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                        <a href="#products" class="bg-white text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg">Shop Now</a>
-                        <a href="#about" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-colors">Learn More</a>
+                        <a href="#products" class="bg-white text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg hover-scale">Shop Now</a>
+                        <a href="#about" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-colors hover-scale">Learn More</a>
                     </div>
                 </div>
                 <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center animate-slide-up">
-                    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion Collection" class="rounded-lg shadow-2xl max-w-full h-auto">
+                    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion Collection" class="rounded-lg shadow-2xl max-w-full h-auto hero-image">
                 </div>
             </div>
         </div>
         
         <!-- Wave shape divider -->
-        <div class="absolute bottom-0 left-0 right-0">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full h-auto">
-                <path fill="#ffffff" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+        <div class="custom-shape-divider-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.29,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" class="shape-fill"></path>
             </svg>
         </div>
     </section>
     
     <!-- Features Section -->
-    <section class="py-16 bg-white">
+    <section class="py-20 bg-white fade-in-section">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 font-playfair gradient-text">Why Choose Hamsa Clothing?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Discover the qualities that make Hamsa Clothing the perfect choice for your wardrobe needs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <!-- Feature 1 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-                    <div class="bg-primary-100 text-primary-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-truck text-2xl"></i>
+                <div class="feature-card bg-gray-50 p-8 rounded-lg shadow-custom text-center">
+                    <div class="bg-primary-100 text-primary-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-tshirt text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Free Shipping</h3>
-                    <p class="text-gray-600">Free shipping on all orders over $50. International shipping available.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 font-playfair">Premium Quality</h3>
+                    <p class="text-gray-600 leading-relaxed">Our clothing is crafted with the finest materials, ensuring durability, comfort, and a luxurious feel that lasts.</p>
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-                    <div class="bg-primary-100 text-primary-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-undo text-2xl"></i>
+                <div class="feature-card bg-gray-50 p-8 rounded-lg shadow-custom text-center">
+                    <div class="bg-primary-100 text-primary-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-paint-brush text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Easy Returns</h3>
-                    <p class="text-gray-600">30-day return policy. No questions asked, hassle-free returns.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 font-playfair">Timeless Designs</h3>
+                    <p class="text-gray-600 leading-relaxed">From classic staples to bold statement pieces, our designs are created to elevate your style effortlessly.</p>
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-                    <div class="bg-primary-100 text-primary-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-shield-alt text-2xl"></i>
+                <div class="feature-card bg-gray-50 p-8 rounded-lg shadow-custom text-center">
+                    <div class="bg-primary-100 text-primary-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Secure Payment</h3>
-                    <p class="text-gray-600">All transactions are secure and encrypted for your protection.</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 font-playfair">Customer Focused</h3>
+                    <p class="text-gray-600 leading-relaxed">We prioritize your comfort and confidence, ensuring every piece meets your expectations.</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Products Section -->
-    <section id="products" class="py-16 bg-gray-50">
+    <!-- Our Collections Section -->
+    <section id="products" class="py-20 bg-gray-50 fade-in-section">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Collections</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Discover our latest arrivals and bestsellers, carefully selected for quality and style.</p>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 font-playfair gradient-text">Our Collections</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Explore a curated selection of our premium clothing, designed to elevate your everyday style with comfort and confidence.</p>
             </div>
             
-            <!-- Product Categories -->
+            <!-- Category Filters -->
             <div class="flex flex-wrap justify-center mb-12 space-x-2 space-y-2 md:space-y-0">
-                <button class="bg-primary-600 text-white px-6 py-2 rounded-full font-medium">All</button>
-                <button class="bg-white text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">Women</button>
-                <button class="bg-white text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">Men</button>
-                <button class="bg-white text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">Accessories</button>
-                <button class="bg-white text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">Sale</button>
+                <button class="bg-primary-600 text-white px-6 py-2 rounded-full font-medium hover:bg-primary-700 transition-colors">All</button>
+                <button class="bg-white text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors border border-gray-300">Men</button>
+                <button class="bg-white text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors border border-gray-300">Women</button>
+                <button class="bg-white text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors border border-gray-300">New Arrivals</button>
             </div>
             
             <!-- Products Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Product Card 1 -->
-                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden group">
+                <div class="product-card bg-white rounded-xl shadow-custom overflow-hidden">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a" alt="Casual Shirt" class="w-full h-80 object-cover">
+                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a" alt="Classic White Shirt" class="w-full h-80 object-cover">
                         <div class="quick-view absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
                             <button class="bg-white text-primary-600 px-4 py-2 rounded-full font-medium hover:bg-primary-600 hover:text-white transition-colors">Quick View</button>
                         </div>
@@ -242,9 +374,9 @@
                             <span class="bg-primary-600 text-white text-xs px-2 py-1 rounded-full">New</span>
                         </div>
                     </div>
-                    <div class="p-4">
+                    <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-lg font-semibold text-gray-800">Casual Shirt</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 font-playfair">Classic White Shirt</h3>
                             <div class="text-yellow-400">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -253,30 +385,30 @@
                                 <i class="fas fa-star-half-alt"></i>
                             </div>
                         </div>
-                        <p class="text-gray-600 mb-4">$29.99</p>
+                        <p class="text-gray-600 mb-4 text-lg">$39.99</p>
                         <div class="flex space-x-2 mb-4">
-                            <div class="w-6 h-6 rounded-full bg-blue-500 cursor-pointer border-2 border-white"></div>
-                            <div class="w-6 h-6 rounded-full bg-red-500 cursor-pointer border-2 border-white"></div>
-                            <div class="w-6 h-6 rounded-full bg-green-500 cursor-pointer border-2 border-white"></div>
+                            <div class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 cursor-pointer"></div>
+                            <div class="w-6 h-6 rounded-full bg-blue-200 border-2 border-gray-300 cursor-pointer"></div>
+                            <div class="w-6 h-6 rounded-full bg-gray-200 border-2 border-gray-300 cursor-pointer"></div>
                         </div>
-                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors">Add to Cart</button>
+                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">Shop Now</button>
                     </div>
                 </div>
                 
                 <!-- Product Card 2 -->
-                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden group">
+                <div class="product-card bg-white rounded-xl shadow-custom overflow-hidden">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c" alt="Denim Jacket" class="w-full h-80 object-cover">
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c" alt="Bold Denim Jacket" class="w-full h-80 object-cover">
                         <div class="quick-view absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
                             <button class="bg-white text-primary-600 px-4 py-2 rounded-full font-medium hover:bg-primary-600 hover:text-white transition-colors">Quick View</button>
                         </div>
                         <div class="absolute top-4 right-4">
-                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">-15%</span>
+                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">-10%</span>
                         </div>
                     </div>
-                    <div class="p-4">
+                    <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-lg font-semibold text-gray-800">Denim Jacket</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 font-playfair">Bold Denim Jacket</h3>
                             <div class="text-yellow-400">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -285,26 +417,26 @@
                                 <i class="far fa-star"></i>
                             </div>
                         </div>
-                        <p class="text-gray-600 mb-4"><span class="line-through text-gray-400 mr-2">$59.99</span>$49.99</p>
+                        <p class="text-gray-600 mb-4 text-lg"><span class="line-through text-gray-400 mr-2">$69.99</span>$62.99</p>
                         <div class="flex space-x-2 mb-4">
                             <div class="w-6 h-6 rounded-full bg-blue-800 cursor-pointer border-2 border-white"></div>
                             <div class="w-6 h-6 rounded-full bg-gray-800 cursor-pointer border-2 border-white"></div>
                         </div>
-                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors">Add to Cart</button>
+                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">Shop Now</button>
                     </div>
                 </div>
                 
                 <!-- Product Card 3 -->
-                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden group">
+                <div class="product-card bg-white rounded-xl shadow-custom overflow-hidden">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf" alt="Summer Dress" class="w-full h-80 object-cover">
+                        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf" alt="Elegant Maxi Dress" class="w-full h-80 object-cover">
                         <div class="quick-view absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
                             <button class="bg-white text-primary-600 px-4 py-2 rounded-full font-medium hover:bg-primary-600 hover:text-white transition-colors">Quick View</button>
                         </div>
                     </div>
-                    <div class="p-4">
+                    <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-lg font-semibold text-gray-800">Summer Dress</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 font-playfair">Elegant Maxi Dress</h3>
                             <div class="text-yellow-400">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -313,20 +445,20 @@
                                 <i class="fas fa-star"></i>
                             </div>
                         </div>
-                        <p class="text-gray-600 mb-4">$39.99</p>
+                        <p class="text-gray-600 mb-4 text-lg">$49.99</p>
                         <div class="flex space-x-2 mb-4">
                             <div class="w-6 h-6 rounded-full bg-yellow-500 cursor-pointer border-2 border-white"></div>
                             <div class="w-6 h-6 rounded-full bg-pink-500 cursor-pointer border-2 border-white"></div>
                             <div class="w-6 h-6 rounded-full bg-white cursor-pointer border-2 border-gray-300"></div>
                         </div>
-                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors">Add to Cart</button>
+                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">Shop Now</button>
                     </div>
                 </div>
                 
                 <!-- Product Card 4 -->
-                <div class="product-card bg-white rounded-xl shadow-sm overflow-hidden group">
+                <div class="product-card bg-white rounded-xl shadow-custom overflow-hidden">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990" alt="Graphic Tee" class="w-full h-80 object-cover">
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990" alt="Statement Graphic Tee" class="w-full h-80 object-cover">
                         <div class="quick-view absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
                             <button class="bg-white text-primary-600 px-4 py-2 rounded-full font-medium hover:bg-primary-600 hover:text-white transition-colors">Quick View</button>
                         </div>
@@ -334,9 +466,9 @@
                             <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">Bestseller</span>
                         </div>
                     </div>
-                    <div class="p-4">
+                    <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-lg font-semibold text-gray-800">Graphic Tee</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 font-playfair">Statement Graphic Tee</h3>
                             <div class="text-yellow-400">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -345,98 +477,217 @@
                                 <i class="far fa-star"></i>
                             </div>
                         </div>
-                        <p class="text-gray-600 mb-4">$19.99</p>
+                        <p class="text-gray-600 mb-4 text-lg">$29.99</p>
                         <div class="flex space-x-2 mb-4">
                             <div class="w-6 h-6 rounded-full bg-black cursor-pointer border-2 border-white"></div>
                             <div class="w-6 h-6 rounded-full bg-gray-500 cursor-pointer border-2 border-white"></div>
                             <div class="w-6 h-6 rounded-full bg-white cursor-pointer border-2 border-gray-300"></div>
                         </div>
-                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors">Add to Cart</button>
+                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">Shop Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product Card 5 -->
+                <div class="product-card bg-white rounded-xl shadow-custom overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1598033125008-8b43e764e5e6" alt="Tailored Blazer" class="w-full h-80 object-cover">
+                        <div class="quick-view absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <button class="bg-white text-primary-600 px-4 py-2 rounded-full font-medium hover:bg-primary-600 hover:text-white transition-colors">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-semibold text-gray-800 font-playfair">Tailored Blazer</h3>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-lg">$89.99</p>
+                        <div class="flex space-x-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-black cursor-pointer border-2 border-white"></div>
+                            <div class="w-6 h-6 rounded-full bg-navy-500 cursor-pointer border-2 border-white"></div>
+                        </div>
+                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">Shop Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product Card 6 -->
+                <div class="product-card bg-white rounded-xl shadow-custom overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70" alt="Floral Skirt" class="w-full h-80 object-cover">
+                        <div class="quick-view absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <button class="bg-white text-primary-600 px-4 py-2 rounded-full font-medium hover:bg-primary-600 hover:text-white transition-colors">Quick View</button>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">Limited</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-semibold text-gray-800 font-playfair">Floral Skirt</h3>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-lg">$34.99</p>
+                        <div class="flex space-x-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-pink-300 cursor-pointer border-2 border-white"></div>
+                            <div class="w-6 h-6 rounded-full bg-blue-300 cursor-pointer border-2 border-white"></div>
+                        </div>
+                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">Shop Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product Card 7 -->
+                <div class="product-card bg-white rounded-xl shadow-custom overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1598032895469-b7a80d5d78d5" alt="Casual Hoodie" class="w-full h-80 object-cover">
+                        <div class="quick-view absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <button class="bg-white text-primary-600 px-4 py-2 rounded-full font-medium hover:bg-primary-600 hover:text-white transition-colors">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-semibold text-gray-800 font-playfair">Casual Hoodie</h3>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-lg">$44.99</p>
+                        <div class="flex space-x-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-gray-500 cursor-pointer border-2 border-white"></div>
+                            <div class="w-6 h-6 rounded-full bg-black cursor-pointer border-2 border-white"></div>
+                            <div class="w-6 h-6 rounded-full bg-red-500 cursor-pointer border-2 border-white"></div>
+                        </div>
+                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">Shop Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product Card 8 -->
+                <div class="product-card bg-white rounded-xl shadow-custom overflow-hidden">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1583744946564-b52ac3c7c73c" alt="Leather Jacket" class="w-full h-80 object-cover">
+                        <div class="quick-view absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+                            <button class="bg-white text-primary-600 px-4 py-2 rounded-full font-medium hover:bg-primary-600 hover:text-white transition-colors">Quick View</button>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full">Bestseller</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-semibold text-gray-800 font-playfair">Leather Jacket</h3>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-lg">$99.99</p>
+                        <div class="flex space-x-2 mb-4">
+                            <div class="w-6 h-6 rounded-full bg-black cursor-pointer border-2 border-white"></div>
+                            <div class="w-6 h-6 rounded-full bg-brown-500 cursor-pointer border-2 border-white"></div>
+                        </div>
+                        <button class="w-full bg-primary-600 text-white py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">Shop Now</button>
                     </div>
                 </div>
             </div>
             
             <!-- View All Button -->
-            <div class="text-center mt-12">
-                <a href="#" class="inline-block border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-primary-600 hover:text-white transition-colors">View All Products</a>
+            <div class="text-center mt-16">
+                <a href="#" class="inline-block border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-primary-600 hover:text-white transition-colors hover-scale">View All Products</a>
             </div>
         </div>
     </section>
     
     <!-- Trending Section -->
-    <section class="py-16 bg-white">
+    <section class="py-20 bg-white fade-in-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-8 md:mb-0">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Summer Collection" class="rounded-lg shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Spring Collection" class="rounded-lg shadow-xl w-full">
                         <div class="absolute -bottom-6 -right-6 bg-primary-600 text-white p-6 rounded-lg shadow-lg">
-                            <p class="text-lg font-bold">Summer Collection</p>
-                            <p class="text-sm">Up to 30% off</p>
+                            <p class="text-lg font-bold font-playfair">Spring Collection</p>
+                            <p class="text-sm">Up to 25% off</p>
                         </div>
                     </div>
                 </div>
                 <div class="md:w-1/2 md:pl-12">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Trending This Season</h2>
-                    <p class="text-gray-600 mb-6">Our summer collection is designed to keep you cool, comfortable, and stylish during the hottest months of the year. From breathable fabrics to vibrant colors, we've got everything you need to make a statement this season.</p>
-                    <ul class="space-y-3 mb-8">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 font-playfair gradient-text">Trending This Season</h2>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">Our Spring Collection is designed to bring freshness and vibrancy to your wardrobe. Featuring lightweight fabrics and bold colors, these pieces are perfect for the season.</p>
+                    <ul class="space-y-4 mb-8">
                         <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span class="text-gray-700">Lightweight, breathable fabrics</span>
+                            <i class="fas fa-check text-primary-600 mr-3 text-lg"></i>
+                            <span class="text-gray-700 text-lg">Lightweight and breathable fabrics</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span class="text-gray-700">Vibrant, on-trend colors</span>
+                            <i class="fas fa-check text-primary-600 mr-3 text-lg"></i>
+                            <span class="text-gray-700 text-lg">Vibrant, seasonal colors</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span class="text-gray-700">Versatile pieces for any occasion</span>
+                            <i class="fas fa-check text-primary-600 mr-3 text-lg"></i>
+                            <span class="text-gray-700 text-lg">Versatile styles for any occasion</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span class="text-gray-700">Sustainable and eco-friendly options</span>
+                            <i class="fas fa-check text-primary-600 mr-3 text-lg"></i>
+                            <span class="text-gray-700 text-lg">Designed for comfort and confidence</span>
                         </li>
                     </ul>
-                    <a href="#" class="inline-block bg-primary-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors">Explore Collection</a>
+                    <a href="#" class="inline-block bg-primary-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors hover-scale">Explore Collection</a>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-50">
+    <section id="about" class="py-20 bg-gray-50 fade-in-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-6">About Trendy Threads</h2>
-                    <p class="text-gray-600 mb-6">At Trendy Threads, we believe in making fashion accessible and sustainable. Our collections are designed with love, crafted with care, and delivered to your doorstep with a commitment to quality.</p>
-                    <p class="text-gray-600 mb-6">Founded in 2018, we've grown from a small boutique to a beloved fashion destination for thousands of customers worldwide. Our mission is to help you express your unique style while maintaining our commitment to ethical and sustainable practices.</p>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 font-playfair gradient-text">About Hamsa Clothing</h2>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">Hamsa Clothing is where fashion meets. We create premium clothing designed to elevate your everyday style. From timeless staples to bold statement pieces, every item in our collection is crafted with care, comfort, and confidence in mind.</p>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">We believe that great style should be accessible and effortless. Our mission is to redefine your wardrobe with essentials that inspire confidence and individuality. Welcome to Hamsa Clothing—where your style journey begins.</p>
                     <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-white p-4 rounded-lg shadow-sm">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">10K+</h3>
+                        <div class="bg-white p-4 rounded-lg shadow-custom">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2 font-playfair">15K+</h3>
                             <p class="text-gray-600">Happy Customers</p>
                         </div>
-                        <div class="bg-white p-4 rounded-lg shadow-sm">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">5K+</h3>
+                        <div class="bg-white p-4 rounded-lg shadow-custom">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2 font-playfair">8K+</h3>
                             <p class="text-gray-600">Products Sold</p>
                         </div>
-                        <div class="bg-white p-4 rounded-lg shadow-sm">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">15+</h3>
+                        <div class="bg-white p-4 rounded-lg shadow-custom">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2 font-playfair">10+</h3>
                             <p class="text-gray-600">Countries Shipped</p>
                         </div>
-                        <div class="bg-white p-4 rounded-lg shadow-sm">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">4.8</h3>
+                        <div class="bg-white p-4 rounded-lg shadow-custom">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2 font-playfair">4.9</h3>
                             <p class="text-gray-600">Average Rating</p>
                         </div>
                     </div>
-                    <a href="#" class="inline-block border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-full font-semibold hover:bg-primary-600 hover:text-white transition-colors">Learn More</a>
+                    <a href="#" class="inline-block border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-full font-semibold hover:bg-primary-600 hover:text-white transition-colors hover-scale">Learn More</a>
                 </div>
                 <div class="md:w-1/2">
                     <div class="grid grid-cols-2 gap-4">
-                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our Team" class="rounded-lg shadow-md">
-                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our Store" class="rounded-lg shadow-md mt-8">
-                        <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sustainable Practices" class="rounded-lg shadow-md">
-                        <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fashion Design" class="rounded-lg shadow-md mt-8">
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our Team" class="rounded-lg shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our Store" class="rounded-lg shadow-md mt-8 hover-scale">
+                        <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fashion Practices" class="rounded-lg shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fashion Design" class="rounded-lg shadow-md mt-8 hover-scale">
                     </div>
                 </div>
             </div>
@@ -444,16 +695,16 @@
     </section>
     
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-16 bg-white">
+    <section id="testimonials" class="py-20 bg-white fade-in-section">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">What Our Customers Say</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our customers have to say about their Trendy Threads experience.</p>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 font-playfair gradient-text">What Our Customers Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Hear from our valued customers about their experience with Hamsa Clothing.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg shadow-custom">
                     <div class="text-yellow-400 mb-4">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -461,18 +712,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"I absolutely love the quality of clothes from Trendy Threads. The fabrics are soft, durable, and the designs are always on point. My go-to fashion destination!"</p>
+                    <p class="text-gray-600 mb-6 italic leading-relaxed">"Hamsa Clothing has transformed my wardrobe! The quality is unmatched, and the designs are so versatile. I feel confident every time I wear their pieces."</p>
                     <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Priya Sharma" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="text-lg font-semibold text-gray-800">Sarah Johnson</h4>
-                            <p class="text-gray-600">Loyal Customer</p>
+                            <h4 class="text-lg font-semibold text-gray-800 font-playfair">Priya Sharma</h4>
+                            <p class="text-gray-600">Fashion Enthusiast</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg shadow-custom">
                     <div class="text-yellow-400 mb-4">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -480,18 +731,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"The customer service at Trendy Threads is exceptional. I had an issue with my order, and they resolved it immediately. Plus, their clothes fit perfectly and look amazing!"</p>
+                    <p class="text-gray-600 mb-6 italic leading-relaxed">"I love how Hamsa Clothing combines style with comfort. Their customer service is exceptional, and the delivery was super fast!"</p>
                     <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Verma" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="text-lg font-semibold text-gray-800">Michael Chen</h4>
-                            <p class="text-gray-600">Fashion Enthusiast</p>
+                            <h4 class="text-lg font-semibold text-gray-800 font-playfair">Rahul Verma</h4>
+                            <p class="text-gray-600">Loyal Customer</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg shadow-custom">
                     <div class="text-yellow-400 mb-4">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -499,12 +750,12 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-600 mb-6 italic">"I appreciate Trendy Threads' commitment to sustainability. It's rare to find a fashion brand that cares about the environment while still offering stylish and affordable clothing."</p>
+                    <p class="text-gray-600 mb-6 italic leading-relaxed">"The attention to detail in Hamsa Clothing’s pieces is amazing. Every item I’ve purchased has become a staple in my wardrobe."</p>
                     <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Anjali Patel" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="text-lg font-semibold text-gray-800">Emily Rodriguez</h4>
-                            <p class="text-gray-600">Eco-conscious Shopper</p>
+                            <h4 class="text-lg font-semibold text-gray-800 font-playfair">Anjali Patel</h4>
+                            <p class="text-gray-600">Style Blogger</p>
                         </div>
                     </div>
                 </div>
@@ -513,133 +764,132 @@
     </section>
     
     <!-- Newsletter Section -->
-    <section class="py-16 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+    <section class="py-20 bg-gradient-to-r from-primary-600 to-secondary-600 text-white fade-in-section">
         <div class="container mx-auto px-6">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-4">Join Our Newsletter</h2>
-                <p class="text-lg opacity-90 mb-8">Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
-                <form class="flex flex-col sm:flex-row gap-4">
-                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg focus:outline-none text-gray-800">
-                    <button type="submit" class="bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Subscribe</button>
-                </form>
-                <p class="mt-4 text-sm opacity-80">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+                <h2 class="text-4xl font-bold mb-4 font-playfair">Join Our Newsletter</h2>
+                <p class="text-lg opacity-90 mb-8 leading-relaxed">Stay updated with the latest collections, exclusive offers, and style tips from Hamsa Clothing.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg focus:outline-none text-gray-800 text-lg">
+                    <button class="bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors hover-scale">Subscribe</button>
+                </div>
+                <p class="mt-4 text-sm opacity-80">By subscribing, you agree to our Privacy Policy and consent to receive updates.</p>
             </div>
         </div>
     </section>
     
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-white">
+    <section id="contact" class="py-20 bg-gray-50 fade-in-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Get in Touch</h2>
-                    <p class="text-gray-600 mb-6">Have questions or feedback? We'd love to hear from you. Fill out the form, and our team will get back to you as soon as possible.</p>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 font-playfair gradient-text">Get in Touch</h2>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">We’d love to hear from you! Whether you have a question, feedback, or need assistance, our team is here to help.</p>
                     
-                    <div class="space-y-4 mb-8">
+                    <div class="space-y-6 mb-8">
                         <div class="flex items-start">
                             <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-map-marker-alt text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-800">Our Location</h3>
-                                <p class="text-gray-600">123 Fashion Street, New York, NY 10001</p>
+                                <h3 class="text-lg font-semibold text-gray-800 font-playfair">Our Location</h3>
+                                <p class="text-gray-600">467/1, Biyabani Main Road, Indore, Madhya Pradesh, 452001</p>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
                             <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-envelope text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-800">Email Us</h3>
-                                <a href="mailto:support@trendythreads.com" class="text-primary-600 hover:underline">support@trendythreads.com</a>
+                                <h3 class="text-lg font-semibold text-gray-800 font-playfair">Email Us</h3>
+                                <a href="mailto:support@hamsaclothing.com" class="text-primary-600 hover:underline">support@hamsaclothing.com</a>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
                             <div class="bg-primary-100 text-primary-600 p-3 rounded-full mr-4">
-                                <i class="fas fa-phone"></i>
+                                <i class="fas fa-phone text-lg"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-800">Call Us</h3>
-                                <a href="tel:+1234567890" class="text-primary-600 hover:underline">+1 (234) 567-890</a>
+                                <h3 class="text-lg font-semibold text-gray-800 font-playfair">Call Us</h3>
+                                <a href="tel:+917974481496" class="text-primary-600 hover:underline">+91 7974481496</a>
                             </div>
                         </div>
                     </div>
                     
                     <div class="flex space-x-4">
-                        <a href="#" class="bg-primary-100 text-primary-600 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors">
+                        <a href="https://facebook.com" target="_blank" class="bg-primary-100 text-primary-600 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors hover-scale">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="bg-primary-100 text-primary-600 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors">
+                        <a href="https://instagram.com" target="_blank" class="bg-primary-100 text-primary-600 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors hover-scale">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="bg-primary-100 text-primary-600 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors">
+                        <a href="https://twitter.com" target="_blank" class="bg-primary-100 text-primary-600 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors hover-scale">
                             <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="bg-primary-100 text-primary-600 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors">
-                            <i class="fab fa-pinterest"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div class="md:w-1/2 md:pl-12">
-                    <form class="bg-gray-50 p-6 rounded-lg shadow-sm">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-white p-8 rounded-lg shadow-custom">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 font-playfair">Send Us a Message</h3>
+                        <div class="space-y-6">
                             <div>
-                                <label for="name" class="block text-gray-700 mb-2">Your Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600">
+                                <label for="name" class="block text-gray-700 mb-2 font-medium">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600" placeholder="Enter your name">
                             </div>
                             <div>
-                                <label for="email" class="block text-gray-700 mb-2">Your Email</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600">
+                                <label for="email" class="block text-gray-700 mb-2 font-medium">Your Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600" placeholder="Enter your email">
                             </div>
+                            <div>
+                                <label for="subject" class="block text-gray-700 mb-2 font-medium">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600" placeholder="Enter subject">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2 font-medium">Your Message</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600" placeholder="Enter your message"></textarea>
+                            </div>
+                            <button class="w-full bg-primary-600 text-white py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors hover-scale">Send Message</button>
                         </div>
-                        <div class="mb-4">
-                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
-                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600">
-                        </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-gray-700 mb-2">Your Message</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-primary-600 text-white py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors">Send Message</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
+    
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white pt-12 pb-6">
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <!-- Company Info -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4">Trendy Threads</h3>
-                    <p class="text-gray-400 mb-4">Your destination for high-quality, fashionable clothing designed for the modern you.</p>
+                    <h3 class="text-2xl font-semibold mb-6 font-playfair">Hamsa Clothing</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Elevate your everyday style with premium, accessible fashion. Crafted with care, comfort, and confidence in mind.</p>
                     <div class="flex space-x-4">
-                        <a href="https://instagram.com" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors">
-                            <i class="fab fa-instagram"></i>
+                        <a href="https://instagram.com" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors hover-scale">
+                            <i class="fab fa-instagram text-lg"></i>
                         </a>
-                        <a href="https://facebook.com" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors">
-                            <i class="fab fa-facebook"></i>
+                        <a href="https://facebook.com" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors hover-scale">
+                            <i class="fab fa-facebook text-lg"></i>
                         </a>
-                        <a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors hover-scale">
+                            <i class="fab fa-twitter text-lg"></i>
                         </a>
-                        <a href="https://pinterest.com" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors">
-                            <i class="fab fa-pinterest"></i>
+                        <a href="https://pinterest.com" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors hover-scale">
+                            <i class="fab fa-pinterest text-lg"></i>
                         </a>
                     </div>
                 </div>
                 
                 <!-- Quick Links -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
+                    <h3 class="text-xl font-semibold mb-6 font-playfair">Quick Links</h3>
+                    <ul class="space-y-3">
                         <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Collections</a></li>
                         <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
                         <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
                         <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
@@ -648,8 +898,8 @@
                 
                 <!-- Customer Service -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4">Customer Service</h3>
-                    <ul class="space-y-2">
+                    <h3 class="text-xl font-semibold mb-6 font-playfair">Customer Service</h3>
+                    <ul class="space-y-3">
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping & Returns</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Size Guide</a></li>
@@ -658,26 +908,27 @@
                     </ul>
                 </div>
                 
-                <!-- Newsletter -->
+                <!-- Contact Info -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4">Newsletter</h3>
-                    <p class="text-gray-400 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
-                        <button type="submit" class="bg-primary-600 text-white px-4 py-2 rounded-r-lg hover:bg-primary-700 transition-colors">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
+                    <h3 class="text-xl font-semibold mb-6 font-playfair">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary-400 mr-3 mt-1"></i>
+                            <span class="text-gray-400">467/1, Biyabani Main Road, Indore, Madhya Pradesh, 452001</span>
+                        </li>
+                        <li><a href="mailto:support@hamsaclothing.com" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-envelope mr-3"></i>support@hamsaclothing.com</a></li>
+                        <li><a href="tel:+917974481496" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-phone mr-3"></i>+91 7974481496</a></li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 pt-6">
+            <div class="border-t border-gray-700 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-gray-400">&copy; 2025 Trendy Threads. All rights reserved.</p>
+                    <p class="text-gray-400 text-sm">© 2025 Hamsa Clothing. All rights reserved.</p>
                     <div class="flex space-x-4 mt-4 md:mt-0">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookie Policy</a>
                     </div>
                 </div>
             </div>
@@ -685,8 +936,8 @@
     </footer>
     
     <!-- Back to Top Button -->
-    <a href="#" id="back-to-top" class="fixed bottom-6 right-6 bg-primary-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
-        <i class="fas fa-arrow-up"></i>
+    <a href="#" id="back-to-top" class="fixed bottom-6 right-6 bg-primary-600 text-white p-4 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary-700">
+        <i class="fas fa-arrow-up text-lg"></i>
     </a>
     
     <!-- Scripts -->
@@ -707,7 +958,6 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
-                // Close mobile menu if open
                 if (mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
                     mobileMenuButton.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
@@ -744,17 +994,94 @@
         });
         
         // Header Scroll Effect
-        const header = document.querySelector('header');
+        const header = document.querySelector('.navbar');
         
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
                 header.classList.add('py-2');
                 header.classList.remove('py-4');
             } else {
+                header.classList.remove('scrolled');
                 header.classList.add('py-4');
                 header.classList.remove('py-2');
             }
         });
+        
+        // Fade In on Scroll
+        const fadeInSections = document.querySelectorAll('.fade-in-section');
+        
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeInSections.forEach(section => {
+            fadeInObserver.observe(section);
+        });
+        
+        // Newsletter Form Validation
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                const emailValue = emailInput.value.trim();
+                
+                if (!emailValue) {
+                    alert('Please enter your email address.');
+                    return;
+                }
+                
+                if (!/\S+@\S+\.\S+/.test(emailValue)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                
+                alert('Thank you for subscribing to our newsletter!');
+                newsletterForm.reset();
+            });
+        }
+        
+        // Contact Form Validation
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = contactForm.querySelector('#name').value.trim();
+                const email = contactForm.querySelector('#email').value.trim();
+                const subject = contactForm.querySelector('#subject').value.trim();
+                const message = contactForm.querySelector('#message').value.trim();
+                
+                if (!name) {
+                    alert('Please enter your name.');
+                    return;
+                }
+                
+                if (!email || !/\S+@\S+\.\S+/.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                
+                if (!subject) {
+                    alert('Please enter a subject.');
+                    return;
+                }
+                
+                if (!message) {
+                    alert('Please enter your message.');
+                    return;
+                }
+                
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            });
+        }
     </script>
 </body>
 </html>
